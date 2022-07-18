@@ -1,0 +1,22 @@
+/* INFORMAÇÕES AULAS */
+
+~ AULA 01 ~
+criar novo projeto react:
+npx create-react-app my-app
+
+cd nome-projeto
+code .
+
+/* instalar yarn */
+npm install -g yarn
+
+apagar node_modules
+
+/* instalar dependencias */
+yarn install
+
+apagar package-lock.json para não dar conflito
+-------------
+package.json > receita de bolo do nosso projeto
+package.json > dependencies > ingredientes do nosso bolo >> software/acessórios que a gente importa pro nosso projeto funcionar
+

@@ -1,23 +1,104 @@
-import logo from './logo.svg';
-import './App.css';
+import { useCallback, useState } from "react";
+import Cart from "./components/Cart";
+import Main from "./components/Main";
+import Menu from "./components/Menu";
+import CartContext from "./contexts/CartContext";
+import ProductsContext from "./contexts/ProductsContext";
+import products from "./products.json";
 
 function App() {
+  const [cart, setCart] = useState([]);
+
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const toogleCartOpen = useCallback(() => {
+    setCartOpen(!cartOpen);
+  }, [cartOpen]);
+
+  const cartProductIsCurrentProduct = useCallback(
+    (cartProduct, currentProduct) =>
+      cartProduct.id === currentProduct.id &&
+      cartProduct.size === currentProduct.size &&
+      cartProduct.color === currentProduct.color,
+    []
+  );
+
+  const addProductToCart = useCallback(
+    (product) => {
+      const foundProductIndex = cart.findIndex((cartProduct) =>
+        cartProductIsCurrentProduct(cartProduct, product)
+      );
+
+      if (foundProductIndex !== -1) {
+        setCart(
+          cart.map((cartProduct, index) =>
+            index === foundProductIndex
+              ? {
+                  ...cartProduct,
+                  qty: parseInt(cartProduct.qty, 10) + 1,
+                }
+              : cartProduct
+          )
+        );
+      } else {
+        setCart([...cart, { ...product, qty: 1 }]);
+      }
+
+      setCartOpen(true);
+    },
+    [cart, cartProductIsCurrentProduct]
+  );
+
+  const removeProductFromCart = useCallback(
+    (product) => {
+      setCart(
+        cart.filter(
+          (cartProduct) =>
+            cartProduct.id !== product.id ||
+            cartProduct.size !== product.size ||
+            cartProduct.color !== product.color
+        )
+      );
+    },
+    [cart]
+  );
+
+  const clearCart = useCallback(() => {
+    setCart([]);
+  }, []);
+
+  const changeProductQtyInCart = useCallback(
+    (cartProduct, qty) => {
+      setCart(
+        cart.map((currentCartProduct) =>
+          cartProductIsCurrentProduct(cartProduct, currentCartProduct)
+            ? { ...currentCartProduct, qty: parseInt(qty, 10) }
+            : currentCartProduct
+        )
+      );
+    },
+    [cart, cartProductIsCurrentProduct]
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <Menu />
+      <ProductsContext.Provider value={{ products }}>
+        <CartContext.Provider
+          value={{
+            cart,
+            cartOpen,
+            toogleCartOpen,
+            changeProductQtyInCart,
+            addProductToCart,
+            removeProductFromCart,
+            clearCart,
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <Cart cart={cart} />
+          <Main />
+        </CartContext.Provider>
+      </ProductsContext.Provider>
     </div>
   );
 }

@@ -1,0 +1,73 @@
+[
+  {
+    "id": "8b55963a-69d6-4372-a33e-8d4133cee8fa",
+    "category": "shoes",
+    "collection": "Winter Collection",
+    "model": {
+      "line": "Airmax",
+      "brand": "Nike",
+      "description": "Men Black Sneakers",
+      "sizes": [7, 8, 9, 10, 11],
+      "colors": [
+        { "id": "yellow", "hex": "#FDC60F" },
+        { "id": "black", "hex": "#020203" },
+        { "id": "blue", "hex": "#05A0CA" }
+      ]
+    },
+    "price": {
+      "originalPrice": 200,
+      "discountedPrice": 150
+    },
+    "photos": [
+      "https://images.lojanike.com.br/1024x1024/produto/tenis-nike-air-force-1-07-qs-masculino-AH8462-400-4.png"
+    ]
+  },
+  {
+    "id": "8b55963a-69d6-4372-a33e-8d4133cee8fb",
+    "category": "shoes",
+    "collection": "Winter Collection",
+    "model": {
+      "line": "Rush",
+      "brand": "Nike",
+      "description": "Men White Sneakers",
+      "sizes": [7, 8, 10, 12],
+      "colors": [
+        { "id": "yellow", "hex": "#FDC60F" },
+        { "id": "black", "hex": "#020203" },
+        { "id": "red", "hex": "#cc0205" },
+        { "id": "blue", "hex": "#05A0CA" }
+      ]
+    },
+    "price": {
+      "originalPrice": 220,
+      "discountedPrice": 170
+    },
+    "photos": [
+      "https://www.dmtcycling.com/assets2021/img/home/hp-krsl-poga-tdf22.png"
+    ]
+  },
+  {
+    "id": "8b55963a-69d6-4372-a33e-8d4133cee8fs",
+    "category": "shoes",
+    "collection": "Winter Collection",
+    "model": {
+      "line": "Rush",
+      "brand": "Nike",
+      "description": "Men White Sneakers",
+      "sizes":  [8, 9, 10, 12],
+      "colors": [
+        { "id": "yellow", "hex": "#FDC60F" },
+        { "id": "black", "hex": "#020203" },
+        { "id": "red", "hex": "#cc0205" },
+        { "id": "green", "hex": "#1fd655" }
+      ]
+    },
+    "price": {
+      "originalPrice": 220,
+      "discountedPrice": 170
+    },
+    "photos": [
+      "https://images.lojanike.com.br/1024x1024/produto/tenis-nike-air-force-1-07-qs-masculino-AH8462-400-4.png"
+    ]
+  }
+]
